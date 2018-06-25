@@ -1,0 +1,109 @@
+
+<div class="modal-header">
+	<span style="color: Gray; font-weight: bold; text-align: center;">Vendor
+		Details</span>
+</div>
+
+<style>
+
+.modal-header{
+	background-image: url("images/bac.png");
+}
+.modal-body {
+	background-image: url("images/bac.png");
+	
+}
+.modal-footer{
+	background-image: url("images/bac.png");
+}
+.table{
+	border: hidden;
+}
+}
+</style>
+<form name="form.showInvVendorForm">
+	<div class="modal-body">
+
+		<table class="table">
+			<tr>
+				<td><label for="vendorId">Vendor ID:</label></td>
+				<td>{{invVendor.venId}}</td>
+			</tr>
+			<tr>
+				<td><label for="email">Email:</label></td>
+				<td><span>{{invVendor.email}}</span></td>
+			</tr>
+
+			<tr>
+				<td><label for="firstName">Name:</label></td>
+				<td>{{invVendor.name}}</td>
+			</tr>
+			
+			<tr>
+				<td><label for="addressType">
+				<b>{{invVendor.addressType}}</b>&nbsp;ADDRESS</label></td>
+				<td>
+					{{invVendor.address1}}<br/>
+					{{invVendor.city1}}
+					{{invVendor.city1}}-{{invVendor.pincode1}},<br/>
+					{{invVendor.state1}},
+					{{invVendor.country1}}<br>
+			<b>Contact No: </b>{{invVendor.mobilePhonNob}}&nbsp;
+							   {{invVendor.office1phonNob}}&nbsp;
+							   {{invVendor.office2phonNob}}</td>
+			</tr>
+			
+			<tr>
+				<td><label for="addressType">
+				<b>{{invVendor.addressType2}}</b>&nbsp;ADDRESS</label></td>
+				<td>
+					{{invVendor.address2}}<br/>
+					{{invVendor.city2}}
+					{{invVendor.city2}}-{{invVendor.pincode2}},<br/>
+					{{invVendor.state2}},
+					{{invVendor.country2}}<br/>
+			<b>Contact No: </b>{{invVendor.mobilePhonNos}}&nbsp;
+							   {{invVendor.office1phonNos}}&nbsp;
+							   {{invVendor.office2phonNos}}</td>
+			</tr>
+			<tr>
+				<td ng-if="invVendor.bankDetails>0"></td>
+				<td>
+				<label>Bank Details:</label>
+				</td>
+				<td>
+					<!-- <div ng-repeat="bank in invVendor.bankDetails"> -->
+					<table class="table">
+						<tr>
+							<th>Name</th>
+							<th>Account</th>
+							<th>Bank Name</th>
+							<th>Branch Name</th>
+							<th>IFSC Code</th>
+						</tr>
+						
+						<tr  ng-repeat="bank in invVendor.bankDetails">
+							<td>{{bank.accountHolderName}}</td>
+							<td>{{bank.accountNumber}}</td>
+							<td>{{bank.bankName}}</td>
+							<td>{{bank.branch}}</td>
+							<td>{{bank.ifscCode}}</td>
+						</tr>
+					</table>
+						<!-- <b>Name:</b>	<p>{{bank.accountHolderName}}</p>
+						<b>Account Number:</b>  <p>{{bank.accountNumber}}</p>
+						<b>Bank Name:</b>	<p>{{bank.bankName}}</p>
+						<b>Branch Name:</b>	<p>{{bank.branch}}</p>
+						<b>IFSC Code:</b>	<p>{{bank.ifscCode}}</p>	 -->					
+					<!-- </div> -->
+				</td>
+			</tr>
+
+		</table>
+
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-warning" ng-click="cancel()">Cancel</button>
+	</div>
+</form>
+ 

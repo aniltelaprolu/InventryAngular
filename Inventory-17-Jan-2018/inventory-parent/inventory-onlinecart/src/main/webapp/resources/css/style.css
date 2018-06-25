@@ -1,0 +1,393 @@
+/* CSS Document */
+body
+{
+	
+}
+
+p
+{
+	font-size: 12px;
+	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+}
+
+
+
+.container-fluid
+{
+	padding: 0px !important;
+	margin: 0px !important;
+}
+
+
+/***************************************************************************************
+top header
+***************************************************************************************/
+.topheader {
+    background: #000;
+    height: 35px;
+	padding-right:70 px !important;
+}
+.fa
+{
+	color: #fff;
+	
+}
+
+.topheaderleftlist
+{
+	list-style: none;
+}
+
+.topheaderleftlist li
+{
+	float: left;
+	padding: 5px 20px ;
+}
+
+.topheaderrightlist
+{
+	list-style: none;
+}
+
+.topheaderrightlist li
+{
+	float: right;
+	padding: 5px 20px ;
+}
+
+
+/***************************************************************************************
+top navigation
+***************************************************************************************/
+.topnavlist
+{
+	list-style: none;
+}
+
+.topnavlist li
+{
+	float: left;
+	padding: 15px 20px
+}
+
+.topnavlist li a
+{
+	text-transform: uppercase;
+	color: #978585;
+	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+	text-decoration: none;
+}
+
+/***************************************************************************************
+Search bar
+***************************************************************************************/
+.add-on .input-group-btn > .btn {
+border: none;
+}
+/* stop the glowing blue shadow */
+
+
+.input-group
+{
+	border: 1px solid #d9d9d9;
+	margin-top: 10px;
+	width: 225px;
+	border-radius: 2px;
+}
+
+.input-group-btn{
+	box-shadow: none;
+}
+#srch-term{
+	border: none;
+	box-shadow: none;
+}
+
+.search
+{
+	color: #e3d9d9 !important;
+	
+}
+
+/**************************************************************************************
+Slider
+***************************************************************************************/
+
+.item img
+{
+	width: 100% !important;
+	height: 400px !important;
+}
+
+.row
+{
+	margin-right: 0px !important;
+	margin-left: 0px !important;
+}
+
+/**************************************************************************************
+Slider
+***************************************************************************************/
+
+.categoryheader
+{
+	text-transform: uppercase;
+	color: #000;
+	text-align: center;
+	margin: 10px 0px;
+}
+
+
+/**************************************************************************************
+shop by sale
+***************************************************************************************/
+
+.shopbysale {
+    text-align: center;
+	float: left;
+	margin-bottom: 50px;
+}
+
+.shopbysale img
+{
+	width: 375px;
+	height: 460px
+}
+
+.shopformen img {
+    height: 172px;
+    width: 220px;
+}
+
+.caticon img {
+    height: 14px;
+    width: 20px;
+    float: left;
+    margin: 22px;
+}
+
+
+.menscategory h5 {
+    padding: 10px;
+    float: left;
+    width: 100%;
+    color: #8A8484;
+    padding-left: 20px;
+}
+.menscategory
+{
+
+	height: 50px;
+}
+
+.caticon
+{
+	width: 10%;
+	float: left;
+}
+
+.cattitle
+{
+	width: 50%;
+	float: left;
+}
+
+.shopformen {
+    margin-bottom: 50px;
+}
+
+
+
+.container {
+    width: 1519px !important;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 0px !important;
+}
+
+
+/**************************************************************************************
+Own Wardrobe
+***************************************************************************************/
+.mywardrobe-wrapper
+{
+	width: auto;
+	height: auto;
+	background-color: #000;
+	padding: 15px 100px 15px 100px;
+}
+
+.mywardrobe-wrapper-title
+{
+	width: auto;
+	height: 41px;
+	padding: 5px;
+	background-color: #fff;
+}
+.mywardrobe-category
+{
+	width: 245px;
+border-radius: 5px;
+float: left;
+padding: 5px 25px;
+letter-spacing: 4px;
+	margin: 0px 5px;
+text-align: center;
+}
+
+.first
+{
+	background-color: #AE0041;
+	color: #fff;
+}
+
+.second
+{
+	background-color:#FD0C6E;
+	color: #fff;
+}
+
+.third
+{
+	background-color:#8F650A;
+	color: #fff;
+}
+
+.fourth
+{
+	background-color:#4F4B4B;
+	color: #fff;
+}
+
+.fifth
+{
+	background-color:#15264F;
+	color: #fff;
+}
+.sixth
+{
+	background-color:#B91CE4;
+	color: #fff;
+}
+.seventh
+{
+	background-color:#57AD09;
+	color: #fff;
+}
+.eigth
+{
+	background-color:#1F5204;
+	color: #fff;
+}
+.nineth
+{
+	background-color:#09033E;
+	color: #fff;
+}
+.tenth
+{
+	background-color:#38A8DF;
+	color: #fff;
+}
+
+
+
+.mywardrobeimg {
+    width: 90%;
+    height: 250px;
+	padding: 7px;
+}
+
+.mywardrobe_image{
+	text-align: center;
+}
+
+
+/**************************************************************************************
+Footer
+***************************************************************************************/
+.top-footer
+{
+	width: 100%;
+	height: 440px;
+	color: #fff;
+	background-color: #262424;
+	margin-top: 10px;
+}
+.top-footer-links
+{
+	list-style: none;
+	line-height: 40px;
+}
+
+.top-footer-links li a
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.top-footer-wrapper
+{
+	padding: 40px;
+}
+
+.top-footer-title {
+    margin-left: 40px;
+    margin-bottom: 30px;
+}
+
+.bottom-footer
+{
+	width: 100%;
+background-color: #000;
+height: 50px;
+padding: 10px;
+}
+
+.payment img
+{
+	float: right;
+}
+
+/**************************************************************************************
+Responsive
+***************************************************************************************/
+
+@media (max-width: 1200px) {
+	
+	
+}
+
+@media (min-width: 769px) and (max-width: 979px) {
+	
+	.shopbysale img {
+    width: 306px;
+    height: 460px;
+}
+}
+
+@media (max-width: 768px) {
+	.shopbysale img {
+    width: 236px;
+    height: 460px;
+}
+	
+}
+
+
+@media (max-width: 600px) {
+	
+	.shopbysale img {
+    width: 270px;
+    height: 460px;
+}
+}
+
+@media (max-width: 479px) {
+	
+	.shopbysale img {
+    width: 300px;
+    height: 460px;
+}
+}
+

@@ -1,0 +1,67 @@
+<div class="modal-header">
+	<span style="color: Gray; font-weight: bold;">Enter Category
+		Details</span>
+</div>
+
+<style>
+select {
+	width: 150px;
+}
+
+body {
+	font-family: Verdana, Arial, helvetica, Geneva, sans-serif;
+	font-size: 12px;
+}
+
+.modal-header {
+	background-image: url("images/bac.png");
+}
+
+form {
+	background-image: url("images/bac.png");
+}
+
+input[type=text], [type=number], [type=email] {
+	background-color: activeborder;
+}
+</style>
+
+
+<form name="form.addNewCategoryForm" ng-submit="submitNewCategoryForm()"
+	novalidate>
+
+	<div class="modal-body">
+
+		<div class="row">
+		
+		
+			<div class="col-md-6">
+				<div class="form-group">
+		 		<label for="exampleSelect1">Menu Group</label><span style="color: red;font-weight: bold;">*</span>  
+			       	<select class="form-control" id="exampleSelect1" ng-model="MenuGroupId" ng-change="GetSelectedCategory()">
+			         	<option value=''>Select</option>   
+			         	<option ng-repeat="menu in menuNames" value='{{menu.menuGroupId}}'>{{menu.menuGroupName}}</option>     
+			        </select>
+		    	</div>
+    		</div>
+
+			<div class="col-md-6">
+				<div class="form-group has-warning">
+					<label>Category</label><span style="color: red; font-weight: bold;">*</span>
+					<input placeholder="Enter Category" type="text"
+						class="form-control" ng-model="categoryName" name="categoryName" required="required"/>
+					<p
+						ng-show="form.addCategoriesForm.categoryName.$touch && form.addCategoriesForm.categoryName.$invalid"
+						class="help-block">Category is required.</p>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-primary"
+			ng-disabled="form.addNewCategoryForm.$invalid">OK</button>
+		<button type="button" class="btn btn-warning" ng-click="cancel()">Cancel</button>
+	</div>
+</form>

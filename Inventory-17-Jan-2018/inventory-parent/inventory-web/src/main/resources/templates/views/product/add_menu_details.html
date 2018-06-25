@@ -1,0 +1,77 @@
+<div class="modal-header">
+	<span style="color: Gray; font-weight: bold;">Enter Details</span>
+</div>
+
+<style>
+select {
+	width: 150px;
+}
+
+body {
+	font-family: Verdana, Arial, helvetica, Geneva, sans-serif;
+	font-size: 12px;
+}
+
+.modal-header {
+	background-image: url("images/bac.png");
+}
+
+form {
+	background-image: url("images/bac.png");
+}
+
+input[type=text], [type=number], [type=email] {
+	background-color: activeborder;
+}
+</style>
+
+
+<form name="form.addMenuForm" ng-submit="submitMenuForm()" novalidate>
+
+	<div class="modal-body">
+
+		<div class="row">
+
+			<div style="margin-left: 70px" class="col-md-8">
+				<div class="form-group has-warning">
+					<label>Menu Group</label><span
+						style="color: red; font-weight: bold;">*</span> <input
+						placeholder="Enter MenuGroup" type="text" class="form-control"
+						ng-model="menuGroupName" name="menuGroupName" required="required"/>
+					<p
+						ng-show="form.addMenuForm.menuGroupName.$touch && form.addMenuForm.menuGroupName.$invalid"
+						class="help-block">MenuGroup is required.</p>
+				</div>
+			</div>
+
+			<!-- <div class="col-md-4">
+				<div class="form-group has-warning">
+					<label>Category</label><span style="color: red; font-weight: bold;">*</span>
+					<input placeholder="Enter Category" type="text"
+						class="form-control" ng-model="categoryName" name="categoryName" />
+					<p
+						ng-show="form.addMenuForm.categoryName.$touch && form.addMenuForm.categoryName.$invalid"
+						class="help-block">Category is required.</p>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group has-warning">
+					<label for="exampleSelect1">SubCategory</label><span
+						style="color: red; font-weight: bold;">*</span> <input
+						placeholder="Enter SubCategory" type="text" class="form-control"
+						ng-model="subCategoryName" name="subCategoryName" />
+					<p
+						ng-show="form.addMenuForm.subCategoryName.$touch && form.addMenuForm.subCategoryName.$invalid"
+						class="help-block">SubCategory is required.</p>
+				</div>
+			</div>
+ -->
+		</div>
+	</div>
+
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-primary"
+			ng-disabled="form.addMenuForm.$invalid">Add</button>
+		<button type="button" class="btn btn-warning" ng-click="cancel()">Cancel</button>
+	</div>
+</form>

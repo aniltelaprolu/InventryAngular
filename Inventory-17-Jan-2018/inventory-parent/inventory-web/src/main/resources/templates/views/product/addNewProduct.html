@@ -1,0 +1,131 @@
+<div class="modal-header">
+	<span style="color: Gray; font-weight: bold;">Enter Product Details</span>
+</div>
+
+<style>
+select {
+	width: 150px;
+}
+body{
+	font-family: Verdana, Arial, helvetica, Geneva, sans-serif;
+	font-size: 12px;
+}
+.modal-header {
+	background-image: url("images/bac.png");
+}
+
+form {
+	background-image: url("images/bac.png");
+}
+
+input[type=text], [type=number], [type=email] {
+	background-color: activeborder;
+}
+</style>
+
+
+<form name="form.addInvProductForm" ng-submit="submitInvProductForm()"novalidate >
+
+	<div class="modal-body">
+
+                
+      <!--       
+		<div class="form-group">
+	      <label for="exampleSelect1">Product Name</label><span style="color: red;font-weight: bold;">*</span>     
+	      <select class="form-control" id="product" ng-model="productId" ng-change="addProductDetails()">
+              <option value=''>Select</option>
+          <option ng-repeat="product in productNames" value='{{product.productId}}'>{{product.productName}}</option> 
+          <option value="0">Add New Product </option>
+       	 </select>  
+        </div>
+        
+        
+  	<div ng-show="newProduct">   
+  	 -->
+  		 <div class="row">
+<!-- 	<div class="col-md-4">
+		<div class="form-group has-warning">
+			<label for="exampleSelect1">Product Code</label><span style="color: red;font-weight: bold;">*</span>
+       		<input placeholder="Enter Product Code" type="text" class="form-control"  ng-model="productCode" name="productCode"/>
+       		<p
+				ng-show="form.addInvProductForm.productCode.$touch && !form.ddInvProductForm.productCode.$invalid"
+				class="help-block">Product Code is required.</p>
+        </div>
+		</div> -->
+		
+		<div class="col-md-4">
+  		<div class="form-group has-warning">
+			<label>Product Name</label><span style="color: red;font-weight: bold;">*</span>   <input type="text" name="productName"
+				placeholder="Enter Product Name" class="form-control"
+				ng-model="productName" required>
+			<p
+				ng-show="form.addInvProductForm.productName.$touch && !form.ddInvProductForm.productName.$invalid"
+				class="help-block">Product Name is required.</p>
+		</div> 
+		</div>
+		
+		<div class="col-md-4">
+		<div class="form-group">
+ 		<label for="exampleSelect1">Vendor Name</label><span style="color: red;font-weight: bold;">*</span>  
+	       	<select class="form-control" id="exampleSelect1" ng-model="VendorId" ng-change="GetSelectedProduct()">
+	         	<option value=''>Select</option>   
+	         	<option ng-repeat="vendor in vendorNames" value='{{vendor.vendorId}}'>{{vendor.vendorName}}</option>     
+	        </select>
+    	</div>
+    	</div>
+		
+		<div class="col-md-4">
+		<div class="form-group">
+ 		<label for="exampleSelect1">Menu Group</label><span style="color: red;font-weight: bold;">*</span>  
+	       	<select class="form-control" id="exampleSelect1" ng-model="MenuGroupId" ng-change="GetSelectedCategory()">
+	         	<option value=''>Select</option>   
+	         	<option ng-repeat="menu in menuNames" value='{{menu.menuGroupId}}'>{{menu.menuGroupName}}</option>     
+	        </select>
+    	</div>
+    	</div>
+		
+        <div class="col-md-4">
+		<div class="form-group">
+ 		<label for="exampleSelect1">Category</label><span style="color: red;font-weight: bold;">*</span>  
+	       	<select class="form-control" id="exampleSelect1" ng-model="CategoryId" ng-change="GetSelectedSubCategory()">
+	         	<option value=''>Select</option>   
+	         	<option ng-repeat="category in categoryNames" value='{{category.categoryId}}'>{{category.categoryName}}</option>     
+	        </select>
+    	</div>
+    	</div>
+    	
+         <div class="col-md-4">
+		<div class="form-group">
+ 		<label for="exampleSelect1">SubCategory</label><span style="color: red;font-weight: bold;">*</span>  
+	       	<select class="form-control" id="exampleSelect1" ng-model="SubCategoryId" ng-change="GetSelectedSubCategoryData()">
+	         	<option value=''>Select</option>   
+	         	<option ng-repeat="subCategory in subCategoryNames" value='{{subCategory.subCategoryId}}'>{{subCategory.subCategoryName}}</option>     
+	        </select>
+    	</div>
+    	</div>
+
+  		
+		<div class="col-md-4">
+    	 <div class="form-group has-warning">
+			<label for="description">Description</label><span style="color: red;font-weight: bold;">*</span>  
+			<textarea class="form-control" rows="3" required
+				placeholder="Provide Description About Product" id="description"
+				ng-model="description" name="description"></textarea>
+			<p
+				ng-show="form.addInvProductForm.description.$touch && !form.ddInvProductForm.description.$invalid"
+				class="help-block">Description is required.</p>
+</div>
+</div>
+		</div>
+        
+  </div>      
+        
+    
+        
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-primary"
+			ng-disabled="form.addInvProductForm.$invalid">OK</button>
+		<button type="button" class="btn btn-warning" ng-click="cancel()">Cancel</button>
+	</div>
+ </form>       
+                       

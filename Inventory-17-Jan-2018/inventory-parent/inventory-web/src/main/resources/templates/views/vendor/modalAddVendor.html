@@ -1,0 +1,293 @@
+<div class="modal-header">
+	<span style="color: Gray; font-weight: bold; text-align: center;">Enter Vendor Details</span>
+</div>
+
+<style>
+form {
+	margin: 0px;
+	padding: 20px;
+	font-family: Tahoma;
+}
+
+body{
+	font-family: Verdana, Arial, helvetica, Geneva, sans-serif;
+	font-size: 12px;
+}
+.modal-header {
+	background-image: url("images/bac.png");
+}
+
+form {
+	background-image: url("images/bac.png");
+}
+
+input[type=text], [type=number], [type=email] {
+	color: black;
+	background-color: activeborder;
+}
+
+textarea {
+	background-color: activeborder;
+}
+}
+</style>
+
+<form name="form.addInvVendorForm" ng-submit="submitInvVendorForm()"
+	novalidate>
+
+	<div class="modal-body">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group has-warning">
+					<label for="email">Email</label><span
+						style="color: red; font-weight: bold;">*</span> <input
+						type="email" placeholder="Enter Email" required="required"
+						class="email requiredField form-control" id="email"
+						ng-model="invVendor.email" name="email"> <span
+						style="color: red"
+						ng-show="form.addInvVendorForm.email.$dirty && form.addInvVendorForm.email.$invalid">
+						<span ng-show="form.addInvVendorForm.email.$error.required">Email
+							is required.</span> <span
+						ng-show="form.addInvVendorForm.email.$error.email">Invalid
+							email address.</span>
+					</span>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group has-warning">
+					<label for="firstName">Name</label><span
+						style="color: red; font-weight: bold;">*</span> <input type="text"
+						placeholder="Vendor Name" required="required" class="form-control"
+						id="name" ng-model="invVendor.name" name="name"> <span
+						style="color: red"
+						ng-show="form.addInvVendorForm.name.$touched && form.addInvVendorForm.name.$invalid">Vendor
+						Name is required.</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="col-md-6">
+			<span style="color: black; font-family: Verdana, Arial, helvetica, Geneva, sans-serif; text-align: center;">SHIPPING
+				ADDRESS</span><span style="color: red; font-weight: bold;">*</span>
+			<div class="form-group has-warning">
+				<label for="address1"></label>
+				<textarea class="form-control" rows="4" required
+					placeholder="Address" id="address1" ng-model="invVendor.address1"
+					name="address1"></textarea>
+				<span
+					ng-show="form.addInvVendorForm.address1.$touch && !form.addInvVendorForm.address1.$invalid"
+					class="help-block">Address is required.</span>
+
+			</div>
+
+			<div class="form-group has-warning col-sm-6">
+				<label for="city1">City / Town</label><span
+					style="color: red; font-weight: bold;">*</span> <input type="text"
+					placeholder="City" required="required" class="form-control"
+					id="city" ng-model="invVendor.city1" name="city1">
+			</div>
+
+			<div class="form-group has-warning col-sm-6">
+				<label for="pinCode1">Zip / Postal Code</label><span
+					style="color: red; font-weight: bold;">*</span> <input
+					type="number" placeholder="Pin Code" required="required" ng-minlength="3" ng-maxlength="6"
+					class="form-control" id="pinCode" ng-model="invVendor.pincode1"
+					name="pinCode1">
+			</div>
+			<!-- 
+				<div class="form-group has-warning col-sm-9">
+					<label for="state1">State:</label><span style="color: red;font-weight: bold;">*</span> <input type="text"
+						placeholder="State" required="required" class="form-control"
+						id="state" ng-model="invVendor.state1" name="state1"> <span
+						style="color: red"
+						ng-show="form.addInvVendorForm.state1.$touched && form.addInvVendorForm.state1.$invalid">state
+						required.</span>
+				</div> -->
+
+			<div class="has-warning  col-sm-6">
+				<label for="state1">State</label><span
+					style="color: red; font-weight: bold;">*</span> <br /> <select
+					class="selectpicker form-control" style="font-weight: bold;"
+					required="required" name="state1" data-style=""
+					ng-model="invVendor.state1">
+					<option value="">Select State</option>
+					<option value="Tamil Nadu">Tamil Nadu</option>
+					<!-- 
+						<option value="Andhra Pradesh">Andhra Pradesh</option>
+						<option value="Kerala">Kerala</option>
+						<option value="Maharashtra">Maharashtra</option>
+						<option value="Punjab">Punjab</option>
+						<option value="Telangana">Telangana</option>
+						 -->
+				</select>
+			</div>
+
+
+			<div class="form-group has-warning col-sm-6">
+				<label for="country1">Country</label><span
+					style="color: red; font-weight: bold;">*</span> <input type="text"
+					placeholder="Country" required="required" class="form-control"
+					id="country1" ng-model="invVendor.country1" name="country1">
+			</div>
+
+
+			<div style="width: 210px" class="form-group has-warning col-md-8">
+				<label for="phoneType">Mobile</label><span
+					style="color: red; font-weight: bold;">*</span> <input
+					type="number" placeholder="Mobile" required="required" ng-minlength="3" ng-maxlength="10"
+					class="form-control" id="mobilePhonNob"
+					ng-model="invVendor.mobilePhonNob" name="mobilePhonNob" />
+			</div>
+
+			<div class="form-group has-warning col-sm-6">
+				<label for="office1phonNob">Office 1</label> <input type="number"
+					placeholder="Phone Number" class="form-control" id="office1phonNob"
+					ng-model="invVendor.office1phonNob" name="phonNo2" />
+			</div>
+
+			<div class="form-group has-warning col-sm-6">
+				<label for="office2phonNob">Office 2</label> <input type="number"
+					placeholder="Phone Number" class="form-control" id="office2phonNob"
+					ng-model="invVendor.office2phonNob" name="office2phonNob" />
+			</div>
+		</div>
+
+		<div class="col-md-6">
+			<span style="color: black; font-family: Verdana, Arial, helvetica, Geneva, sans-serif; text-align: center;">BILLING
+				ADDRESS</span><span style="color: red; font-weight: bold;">*</span>
+				<input type="checkbox" ng-model="flag" ng-change="copyAddress()"/><b>Same As Shipping</b>
+			<div class="form-group has-warning">
+				<label for="address2"></label>
+				<textarea class="form-control" rows="4" required
+					placeholder="Address" id="address2" ng-model="invVendor.address2"
+					name="address2"></textarea>
+				<span
+					ng-show="form.addInvVendorForm.address2.$touch && !form.addInvVendorForm.address2.$invalid"
+					class="help-block">Address is required.</span>
+			</div>
+
+			<div class="form-group has-warning col-sm-6">
+				<label for="city2">City / Town</label><span
+					style="color: red; font-weight: bold;">*</span> <input type="text"
+					placeholder="City" required="required" class="form-control"
+					id="city" ng-model="invVendor.city2" name="city2">
+			</div>
+
+			<div class="form-group has-warning col-sm-6">
+				<label for="pinCode2">Zip / Postal Code</label><span
+					style="color: red; font-weight: bold;">*</span> <input
+					type="number" placeholder="Pin Code" required="required"
+					class="form-control" id="pinCode" ng-model="invVendor.pincode2"
+					name="pinCode2">
+			</div>
+
+			<!-- <div class="form-group has-warning col-sm-9">
+					<label for="state2">State:</label><span style="color: red;font-weight: bold;">*</span> <input type="text"
+						placeholder="State2" required="required" class="form-control"
+						id="state" ng-model="invVendor.state2" name="state2"> <span
+						style="color: red"
+						ng-show="form.addInvVendorForm.state2.$touched && form.addInvVendorForm.state2.$invalid">state
+						required.</span>
+				</div> -->
+
+			<div class="has-warning  col-sm-6">
+				<label for="state2">State</label><span
+					style="color: red; font-weight: bold;">*</span> <br /> <select
+					class="selectpicker form-control" style="font-weight: bold;"
+					required="required" name="state2" data-style=""
+					ng-model="invVendor.state2">
+					<option value="">Select State</option>
+					<option value="Tamil Nadu">Tamil Nadu</option>
+					<!-- 
+						<option value="Andhra Pradesh">Andhra Pradesh</option>
+						<option value="Kerala">Kerala</option>
+						<option value="Maharashtra">Maharashtra</option>
+						<option value="Punjab">Punjab</option>
+						<option value="Telangana">Telangana</option>
+						 -->
+				</select>
+			</div>
+
+
+			<div class="form-group has-warning col-sm-6">
+				<label for="country2">Country</label><span
+					style="color: red; font-weight: bold;">*</span> <input type="text"
+					placeholder="Country" required="required" class="form-control"
+					id="country2" ng-model="invVendor.country2" name="country2">
+			</div>
+
+
+
+			<div style="width: 210px" class="form-group has-warning col-md-8">
+				<label for="phoneType">Mobile</label><span
+					style="color: red; font-weight: bold;">*</span> <input
+					type="number" placeholder="Mobile" required="required" ng-minlength="3" ng-maxlength="10"
+					class="form-control" id="mobilePhonNos"
+					ng-model="invVendor.mobilePhonNos" name="mobilePhonNos" />
+			</div>
+
+			<div class="form-group has-warning col-sm-6">
+				<label for="office1phonNos">Office 1</label> <input type="number"
+					placeholder="Phone Number" class="form-control" id="office1phonNos"
+					ng-model="invVendor.office1phonNos" name="office1phonNos" />
+			</div>
+
+			<div class="form-group has-warning col-sm-6">
+				<label for="office2phonNos">Office 2</label> <input type="number"
+					placeholder="Phone Number" class="form-control" id="office2phonNos"
+					ng-model="invVendor.office2phonNos" name="office2phonNos" />
+			</div>
+
+		</div>
+
+
+	</div>
+	
+	<!-- div class="row">
+	<hr/>
+		<div class="form-group has-warning col-sm-4">
+				<label for="accountHolderName">Account Holder Name</label><span
+					style="color: red; font-weight: bold;">*</span> <input type="text"
+					placeholder="Account Holder Name" required="required" class="form-control"
+					id="accountHolderName" ng-model="acHolderName" name="acHolderName">
+		</div>
+		
+		<div class="form-group has-warning col-sm-4">
+				<label for="bankName">Bank Name</label><span
+					style="color: red; font-weight: bold;">*</span> <input type="text"
+					placeholder="Bank Name" required="required" class="form-control"
+					id="bankName" ng-model="bankName" name="bankName">
+		</div>
+		
+		<div class="form-group has-warning col-sm-4">
+				<label for="branch">Branch Name</label><span
+					style="color: red; font-weight: bold;">*</span> <input type="text"
+					placeholder="Branch name" required="required" class="form-control"
+					id="branch" ng-model="branch" name="branch">
+		</div>
+		
+		<div class="form-group has-warning col-sm-4">
+				<label for="accountNo">Account Number</label><span
+					style="color: red; font-weight: bold;">*</span> <input type="text"
+					placeholder="account Number" required="required" class="form-control"
+					id="accountNo" ng-model="accountNo" name="accountNo">
+		</div>
+		
+		<div class="form-group has-warning col-sm-4">
+				<label for="ifscCode">IFSC Code</label><span
+					style="color: red; font-weight: bold;">*</span> <input type="text"
+					placeholder="IFSC Code" required="required" class="form-control"
+					id="ifscCode" ng-model="ifscCode" name="ifscCode">
+		</div>
+			
+	</div> -->
+
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-primary"
+			ng-disabled="form.addInvVendorForm.$invalid">Register</button>
+		<button type="button" class="btn btn-warning" ng-click="cancel()">Cancel</button>
+	</div>
+</form>

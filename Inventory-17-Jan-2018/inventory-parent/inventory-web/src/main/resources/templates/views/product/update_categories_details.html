@@ -1,0 +1,93 @@
+<div class="modal-header">
+	<span style="color: Gray; font-weight: bold;">Modify Menu
+		Details</span>
+</div>
+
+<style>
+select {
+	width: 150px;
+}
+
+body {
+	font-family: Verdana, Arial, helvetica, Geneva, sans-serif;
+	font-size: 12px;
+}
+
+.modal-header {
+	background-image: url("images/bac.png");
+}
+
+form {
+	background-image: url("images/bac.png");
+}
+
+input[type=text], [type=number], [type=email] {
+	background-color: activeborder;
+}
+</style>
+
+
+<form name="form.editMenuForm" ng-submit="submitEditMenuForm()"
+	novalidate>
+
+	<div class="modal-body">
+
+		<div class="row">
+
+			<div class="col-md-4">
+				<div class="form-group has-warning">
+					<label>Menu Group</label><span
+						style="color: red; font-weight: bold;">*</span> <input
+						placeholder="Enter MenuGroup" type="text" class="form-control"
+						ng-model="menuGroup.menuGroupName" name="menuGroup" required="required"/>
+					<p
+						ng-show="form.editMenuForm.menuGroupName.$touch && form.editMenuForm.menuGroupName.$invalid"
+						class="help-block">MenuGroup is required.</p>
+				</div>
+			</div>
+			
+			<div class="col-md-4">
+				<div class="form-group has-warning">
+					<label>Category Name</label><span
+						style="color: red; font-weight: bold;">*</span> <input
+						placeholder="Enter Category" type="text" class="form-control"
+						ng-model="menuGroup.categoryName" name="categoryName" required="required"/>
+					<p
+						ng-show="form.editMenuForm.categoryName.$touch && form.editMenuForm.categoryName.$invalid"
+						class="help-block">Category is required.</p>
+				</div>
+			</div>
+
+		<!-- 	<div class="col-md-4">
+				<div class="form-group has-warning">
+					<label>Category</label><span style="color: red; font-weight: bold;">*</span>
+					<input placeholder="Enter Category" type="text"
+						class="form-control" ng-model="ategory" name="productCode" />
+					<p
+						ng-show="form.addCategoriesForm.productCode.$touch && form.addCategoriesForm.productCode.$invalid"
+						class="help-block">Category is required.</p>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group has-warning">
+					<label for="exampleSelect1">SubCategory</label><span
+						style="color: red; font-weight: bold;">*</span> <input
+						placeholder="Enter SubCategory" type="text" class="form-control"
+						ng-model="subCategory" name="subCategory" />
+					<p
+						ng-show="form.addCategoriesForm.subCategory.$touch && form.addCategoriesForm.subCategory.$invalid"
+						class="help-block">SubCategory is required.</p>
+				</div>
+			</div> -->
+
+		</div>
+	</div>
+
+
+
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-primary"
+			ng-disabled="form.editMenuForm.$invalid">OK</button>
+		<button type="button" class="btn btn-warning" ng-click="cancel()">Cancel</button>
+	</div>
+</form>

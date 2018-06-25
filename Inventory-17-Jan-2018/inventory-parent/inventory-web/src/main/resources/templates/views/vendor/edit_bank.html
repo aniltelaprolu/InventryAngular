@@ -1,0 +1,109 @@
+<div class="modal-header">
+	<span style="color: Gray; font-weight: bold; text-align: center;">
+		Modify Bank Account Details</span>
+</div>
+
+<style>
+form {
+	margin: 0px;
+	padding: 20px;
+	font-family: Tahoma;
+}
+
+body {
+	font-family: Verdana, Arial, helvetica, Geneva, sans-serif;
+	font-size: 12px;
+}
+
+.modal-header {
+	background-image: url("images/bac.png");
+}
+
+form {
+	background-image: url("images/bac.png");
+}
+
+input[type=text], [type=number], [type=email] {
+	color: black;
+	background-color: activeborder;
+}
+
+textarea {
+	background-color: activeborder;
+}
+}
+</style>
+
+<form name="form.editBankDetails" ng-submit="submitUpdateVendorBankForm()"
+	novalidate>
+
+	<div class="modal-body">
+ 		<table class="table">
+			<thead>
+				<tr>
+					<th>Name<span style="color: red;font-weight: bold;">*</span></th>
+					<th>Bank Name<span style="color: red;font-weight: bold;">*</span></th>
+					<th>Branch Name<span style="color: red;font-weight: bold;">*</span></th>
+					<th>Account Number<span style="color: red;font-weight: bold;">*</span></th>
+					<th>IFSC Code<span style="color: red;font-weight: bold;">*</span></th>
+
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr>
+				<td>
+				<div class="form-group has-warning">
+				 <input type="text"
+						placeholder="Account Holder Name" required="required"
+						class="form-control" id="accountHolderName" ng-model="invVendor.accountHolderName"
+						name="acHolderName">
+				</div>
+				
+				</td>
+				<td>
+					<div class="form-group has-warning">
+						<input type="text"
+						placeholder="Bank Name" required="required" class="form-control"
+						id="bankName" ng-model="invVendor.bankName" name="bankName">
+					</div>
+				
+				</td>
+				
+				<td>
+					<div class="form-group has-warning">
+					 <input type="text"
+							placeholder="Branch name" required="required" class="form-control"
+							id="branch" ng-model="invVendor.branch" name="branch">
+					</div>
+				
+				</td>
+				<td>
+					<div class="form-group has-warning">
+						<input type="text"
+							placeholder="Account Number" required="required"
+							class="form-control" id="accountNo" ng-model="invVendor.accountNumber"
+							name="accountNo">
+					</div>
+				
+				</td>
+				<td>
+					<div class="form-group has-warning">
+						<input type="text"
+						placeholder="IFSC Code" required="required" class="form-control"
+						id="ifscCode" ng-model="invVendor.ifscCode" name="ifscCode">
+					</div>
+				</td>
+				
+				</tr>
+				
+			</tbody>
+		</table>
+</div>
+
+		<div class="modal-footer">
+			<button type="submit" class="btn btn-primary"
+			ng-disabled="form.editBankDetails.$invalid">Update Details</button>
+		<button type="button" class="btn btn-warning" ng-click="cancel()">Cancel</button>
+		</div>
+</form>

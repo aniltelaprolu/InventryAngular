@@ -1,0 +1,23 @@
+<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header">Variant Details</h1>
+	</div>
+	<!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+	<div class="col-lg-12">
+		<div class="panel panel-default" ng-app="inventoryApp">
+			<div ng-controller="VariantCtrl" ng-init="load()">
+				<button type="button" tooltip="add New Variant" tooltip-placement="right" id="addNewVariant" class="btn btn-success" ng-click="addNewVariant()">
+					<span class="glyphicon glyphicon-plus"></span> Add Variant
+				</button>
+				<h1>Variant Details</h1>
+				<div id="variantGrid" ui-grid = "variantGridOption" ui-grid-exporter ui-grid-selection ui-grid-pagination  class="variantGrid"></div>
+			</div>
+			<!-- /.panel-body -->
+		</div>
+		<!-- /.panel -->
+	</div>
+	<!-- /.col-lg-12 -->
+</div>

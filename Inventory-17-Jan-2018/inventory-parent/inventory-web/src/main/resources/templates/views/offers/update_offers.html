@@ -1,0 +1,95 @@
+<div class="modal-header">
+	<span style="color: Gray; font-weight: bold;">Modify Offer</span>
+</div>
+
+<style>
+select {
+	width: 150px;
+}
+body{
+	font-family: Verdana, Arial, helvetica, Geneva, sans-serif;
+	font-size: 12px;
+}
+.modal-header {
+	background-image: url("images/bac.png");
+}
+
+form {
+	background-image: url("images/bac.png");
+}
+
+input[type=text], [type=number], [type=email] {
+	background-color: activeborder;
+}
+.row{
+	padding: 15px;
+}
+</style>
+
+<form name="form.editOfferForm" ng-submit="submitUpdateOffersForm()" novalidate>
+<div class="modal-body">
+		<div class="row" >
+			<div class="col-md-3 form-inline">
+			<label for="exampleSelect1">Quantity</label>
+				<div class="form-group">
+					<input type="text" name="quantity" ng-value="{{itemLeevelOffers.quantity}}"
+					 class="form-control"
+					ng-model="itemLeevelOffers.quantity" readonly="readonly" required="required">
+	        	</div>
+			</div>
+			
+			<div class="col-md-3 form-inline">
+			<label for="exampleSelect1">Applied Quantity</label>
+				<div class="form-group">
+					<input type="text" name="quantity" ng-value="{{itemLeevelOffers.givenQuantity}}"
+					 class="form-control"
+					ng-model="itemLeevelOffers.givenQuantity" required="required">
+	        	</div>
+			</div>
+			
+			<div class="col-md-3 form-inline">
+			<label for="exampleSelect1">Offer Name</label>
+				<div class="form-group">
+					<input type="text" name="offersName"
+					placeholder="Enter Offer Name" class="form-control"
+					ng-model="itemLeevelOffers.offerName" required>
+	        	</div>
+			</div>
+			
+			<div class="col-md-3 form-inline">
+			<label for="exampleSelect1">Discount</label>
+				<div class="form-group">
+					<input type="text" name="discount"
+					placeholder="Enter discount " class="form-control"
+					ng-model="itemLeevelOffers.discount" required>
+	        	</div>
+			</div>
+		</div>
+			
+		<div class="row" >
+			<div class="col-md-3 form-inline">
+			<label for="exampleSelect1">Flat Discount</label>
+				<div class="form-group">
+					<input type="text" name="flatDiscount"
+					placeholder="Enter flat Discount" class="form-control"
+					ng-model="itemLeevelOffers.flatDiscount" required>
+	        	</div>
+			</div>
+			
+			<div class="col-md-3 form-inline">
+				<div class="form-group has-warning">
+					<label class="form">Description</label>
+					<textarea class="form-control" rows="3" required 
+					placeholder="Description" id="description" ng-model="itemLeevelOffers.description"
+					name="description"></textarea>
+				</div>
+			</div>
+		</div>
+
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-primary"
+			ng-disabled="form.editOfferForm.$invalid">Update Offer</button>
+			<button type="button" class="btn btn-warning" ng-click="cancel()">Cancel</button>
+	</div>
+
+</form>

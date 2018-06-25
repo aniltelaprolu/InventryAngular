@@ -1,0 +1,22 @@
+<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header">Product Management</h1>
+	</div>
+	<!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+	<div class="col-lg-12">
+		<div class="panel panel-default" ng-app="inventoryApp">
+			<div ng-controller="ProductCtrl">
+				<button type="button" id="addInvProduct" class="btn btn-success" ng-click="addInvProduct()">
+					<span class="glyphicon glyphicon-plus"></span> Add Product
+				</button>
+				<div id="productGrid" ui-grid = "productGridOption" ui-grid-exporter ui-grid-selection ui-grid-pagination  class="productGrid"></div>
+			</div>
+			<!-- /.panel-body -->
+		</div>
+		<!-- /.panel -->
+	</div>
+	<!-- /.col-lg-12 -->
+</div>

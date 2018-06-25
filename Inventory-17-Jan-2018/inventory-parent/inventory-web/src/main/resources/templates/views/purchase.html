@@ -1,0 +1,43 @@
+<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header">Purchase And Place Order Management</h1>
+	</div>
+	<!-- /.col-lg-12 -->
+</div>
+<style>
+.ngCell  {
+  display : table-cell;
+  height: auto !important;
+  overflow:visible;
+  position: static;
+}
+.ngRow {
+  display : table-row;
+  height: auto !important;
+  position: static;
+}
+.ngCellText{
+  height: auto !important;
+  white-space: normal;
+  overflow:visible;
+}
+</style>
+<!-- /.row -->
+<div class="row">
+	<div class="col-lg-12">
+		<div class="panel panel-default" ng-app="inventoryApp">
+			<div ng-controller="PurchaseCtrl">
+				<button type="button" id="addPurchaseOrder" class="btn btn-success" ng-click="addPurchaseOrder()">
+					<span class="glyphicon glyphicon-plus"></span>Raise Purchase Order
+				</button>
+				<button type="button" id="addPlaceOrder" class="btn btn-success" ng-click="placeOrder()">
+					<span class="glyphicon glyphicon-plus"></span>Received Order
+				</button>
+				<div id="purchaseGrid" ui-grid = "purchaseGridOption" ui-grid-exporter ui-grid-selection ui-grid-pagination  class="purchaseGrid"></div>
+			</div>
+			<!-- /.panel-body -->
+		</div>
+		<!-- /.panel -->
+	</div>
+	<!-- /.col-lg-12 -->
+</div>

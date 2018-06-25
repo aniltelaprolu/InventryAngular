@@ -1,0 +1,181 @@
+<div class="modal-header">
+	<span style="color: Gray; font-weight: bold;">Enter Variant
+		Details</span>
+</div>
+
+<style>
+select {
+	width: 150px;
+}
+
+body {
+	font-family: Verdana, Arial, helvetica, Geneva, sans-serif;
+	font-size: 12px;
+}
+
+.modal-header {
+	background-image: url("images/bac.png");
+}
+
+.modal-body {
+	padding: 10px;
+}
+
+form {
+	background-image: url("images/bac.png");
+}
+
+input[type=text], [type=number], [type=email] {
+	background-color: activeborder;
+}
+
+#file-1 {
+	width: 99px;
+	height: 50px;
+}
+
+#length {
+	width: 120px;
+}
+
+.btn-file {
+	position: relative;
+	overflow: hidden;
+}
+
+.btn-file input[type=file] {
+	position: absolute;
+	top: 0;
+	right: 0;
+	min-width: 100%;
+	min-height: 100%;
+	font-size: 100px;
+	text-align: right;
+	filter: alpha(opacity = 0);
+	opacity: 0;
+	outline: none;
+	background: white;
+	cursor: inherit;
+	display: block;
+}
+
+#img-upload {
+	width: 100%;
+}
+</style>
+
+<form name="form.addInvVariantForm" ng-submit="submitInvVariantForm()"
+	enctype="multipart/form-data" novalidate>
+	<div class="row">
+		<div class="modal-body animate">
+
+			<div class="col-md-4">
+				<div class="form-group">
+
+					<label for="exampleSelect1">Vendor Name</label><span
+						style="color: red; font-weight: bold;">*</span> <select
+						class="form-control" id="exampleSelect1" ng-model="VendorId"
+						ng-change="GetSelectedProduct()">
+						<option value=''>Select</option>
+						<option ng-repeat="vendor in vendorNames"
+							value='{{vendor.vendorId}}'>{{vendor.vendorName}}</option>
+					</select>
+				</div>
+
+
+				<div class="form-group">
+					<label for="exampleSelect1">Product Name</label><span
+						style="color: red; font-weight: bold;">*</span> <select
+						class="form-control" id="product" ng-model="productId"
+						ng-change="addProductDetails()">
+						<option value=''>Select</option>
+						<option ng-repeat="product in productNames"
+							value='{{product.productId}}'>{{product.productName}}</option>
+					</select>
+
+				</div>
+				<div class="form-group has-warning">
+					<label>Variant Name</label><span
+						style="color: red; font-weight: bold;">*</span> <input type="text"
+						name="variantName" placeholder="Enter Variant Name"
+						class="form-control" ng-model="invVariant.variantName" required>
+					<p
+						ng-show="form.addInvVariantForm.variantName.$touch && !form.addInvVariantForm.variantName.$invalid"
+						class="help-block">Variant Name is required.</p>
+				</div>
+				<div class="form-group has-warning">
+					<label>Price</label><span style="color: red; font-weight: bold;">*</span>
+					<input type="text" name="price" placeholder="Enter Price"
+						class="form-control" ng-model="invVariant.price" required>
+					<p
+						ng-show="form.addInvVariantForm.price.$touch && !form.addInvVariantForm.price.$invalid"
+						class="help-block">Price is required.</p>
+				</div>
+				<div class="form-group has-warning">
+					<label>Quantity</label><span style="color: red; font-weight: bold;">*</span>
+					<input type="text" name="quantity" placeholder="Enter Quantity"
+						class="form-control" ng-model="invVariant.quantity" required>
+					<p
+						ng-show="form.addInvVariantForm.quantity.$touch && !form.addInvVariantForm.quantity.$invalid"
+						class="help-block">Quantity is required.</p>
+				</div>
+
+			</div>
+			<div class="col-md-4">
+				<label class="control-label">Attribute</label>
+
+				<div ng-repeat="h in dropdowns|limitTo:3" class="row">
+					
+					<select class="form-control col-md-6" ng-model="selectedName"
+						ng-options="x.parameterName for x in h"
+						ng-change="change(selectedName, h)" style="width:auto">
+					</select>
+					<div class="form-group has-warning col-md-6">
+						<multiselect ng-show="selectedName.optsArr.length>1"
+							ng-if="selectedName" ng-model="selectedOption"
+							options="selectedName.optsArr"
+							ng-change="addList(selectedName,selectedOption)"></multiselect>
+						<div class="form-group has-warning">
+							<input class="form-control has-warning col-md-6" ng-if="selectedName"
+								ng-hide="selectedName.optsArr.length>1"
+								placeholder="Enter Length" type="number"
+								ng-model="selectedItem.length"
+								ng-change="addList(selectedName,selectedItem.length)" />
+						</div>
+						
+					</div>
+				</div>
+				
+				<button type="button" tooltip="add More Attribute"
+							tooltip-placement="right"
+							class="btn btn-xs btn-success fa fa-plus"
+							ng-click="add(selectedName)"></button>
+						
+			</div>
+			<div class="col-md-4">
+
+				<label class="control-label">Upload Image</label> <img
+					ng-src="{{filepreview}}" class="img-responsive"
+					ng-show="filepreview" />
+
+				<table>
+					<tbody>
+						<tr>
+							<td><input type="file" ng-file-select="onFileSelect($files)">
+								<div ng-repeat="image in images">
+									<img ng-src="{{image}}" height="50" width="50" ng-model="m1" />
+									<button type="button" class="btn btn-xs btn-danger fa fa-minus"
+										ng-click="deleteImages($index)"></button><br/><br/></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-primary"
+			ng-disabled="form.addInvVariantForm.$invalid">Add</button>
+		<button type="button" class="btn btn-warning" ng-click="cancel()">Cancel</button>
+	</div>
+</form>

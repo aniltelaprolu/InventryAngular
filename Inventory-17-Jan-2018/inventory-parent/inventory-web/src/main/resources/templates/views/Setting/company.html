@@ -1,0 +1,42 @@
+<div class="modal-header">
+	<span style="color: Gray; font-weight: bold;">Create A New Offer</span>
+</div>
+
+<style>
+select {
+	width: 150px;
+}
+body{
+	font-family: Verdana, Arial, helvetica, Geneva, sans-serif;
+	font-size: 12px;
+}
+.modal-header {
+	background-image: url("images/bac.png");
+}
+
+form {
+	background-image: url("images/bac.png");
+}
+
+input[type=text], [type=number], [type=email] {
+	background-color: activeborder;
+}
+.row{
+	padding: 15px;
+}
+</style>
+
+<form name="form.addOffersForm" ng-submit="submitOffersForm()" novalidate>
+		<div class="row" >
+		
+	    	<h1>Company</h1>
+			
+		</div>
+		
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-primary"
+			ng-disabled="form.addOffersForm.$invalid">Save</button>
+			<button type="button" class="btn btn-warning" ng-click="cancel()">Cancel</button>
+	</div>
+
+</form>

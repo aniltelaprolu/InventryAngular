@@ -1,0 +1,46 @@
+<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header">Categories Management</h1>
+	</div>
+	<!-- /.col-lg-12 -->
+</div>
+<style>
+.ngCell  {
+  display : table-cell;
+  height: auto !important;
+  overflow:visible;
+  position: static;
+}
+.ngRow {
+  display : table-row;
+  height: auto !important;
+  position: static;
+}
+.ngCellText{
+  height: auto !important;
+  white-space: normal;
+  overflow:visible;
+}
+</style>
+<!-- /.row -->
+<div class="row">
+	<div class="col-lg-12">
+		<div class="panel panel-default" ng-app="inventoryApp">
+			<div ng-controller="CategoriesCtrl">
+				<button type="button" id="addMenus" class="btn btn-success" ng-click="addMenus()">
+					<span class="glyphicon glyphicon-plus"></span> Add Menu
+				</button>
+				<!-- <button type="button" id="addCategory" class="btn btn-success" ng-click="addCategory()">
+					<span class="glyphicon glyphicon-plus"></span> Add Category
+				</button>
+				<button type="button" id="addSubCategory" class="btn btn-success" ng-click="addSubCategory()">
+					<span class="glyphicon glyphicon-plus"></span> Add SubCategory
+				</button> -->
+				<div id="categoriesGrid" ui-grid = "categoriesGridOption" ui-grid-exporter ui-grid-selection ui-grid-pagination  class="categoriesGrid"></div>
+			</div>
+			<!-- /.panel-body -->
+		</div>
+		<!-- /.panel -->
+	</div>
+	<!-- /.col-lg-12 -->
+</div>

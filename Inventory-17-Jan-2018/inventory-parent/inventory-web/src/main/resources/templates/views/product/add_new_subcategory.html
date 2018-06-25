@@ -1,0 +1,77 @@
+<div class="modal-header">
+	<span style="color: Gray; font-weight: bold;">Enter SubCategory
+		Name</span>
+</div>
+
+<style>
+select {
+	width: 150px;
+}
+
+body {
+	font-family: Verdana, Arial, helvetica, Geneva, sans-serif;
+	font-size: 12px;
+}
+
+.modal-header {
+	background-image: url("images/bac.png");
+}
+
+form {
+	background-image: url("images/bac.png");
+}
+
+input[type=text], [type=number], [type=email] {
+	background-color: activeborder;
+}
+</style>
+
+
+<form name="form.addNewSubCategoryForm" ng-submit="submitNewSubCategoryForm()"
+	novalidate>
+
+	<div class="modal-body">
+
+		<div class="row">
+			
+			<div class="col-md-4">
+		<div class="form-group">
+ 		<label for="exampleSelect1">Menu Group</label><span style="color: red;font-weight: bold;">*</span>  
+	       	<select class="form-control" id="exampleSelect1" ng-model="MenuGroupId" ng-change="GetSelectedCategory()">
+	         	<option value=''>Select</option>   
+	         	<option ng-repeat="menu in menuNames" value='{{menu.menuGroupId}}'>{{menu.menuGroupName}}</option>     
+	        </select>
+    	</div>
+    	</div>
+		
+        <div class="col-md-4">
+		<div class="form-group">
+ 		<label for="exampleSelect1">Category</label><span style="color: red;font-weight: bold;">*</span>  
+	       	<select class="form-control" id="exampleSelect1" ng-model="CategoryId" ng-change="GetSelectedSubCategory()">
+	         	<option value=''>Select</option>   
+	         	<option ng-repeat="category in categoryNames" value='{{category.categoryId}}'>{{category.categoryName}}</option>     
+	        </select>
+    	</div>
+    	</div>
+
+			<div class="col-md-4">
+				<div class="form-group has-warning">
+					<label for="exampleSelect1">SubCategory</label><span
+						style="color: red; font-weight: bold;">*</span> <input
+						placeholder="Enter SubCategory" type="text" class="form-control"
+						ng-model="subCategoryName" name="subCategoryName" required="required"/>
+					<p
+						ng-show="form.addNewSubCategoryForm.subCategoryName.$touch && form.addNewSubCategoryForm.subCategoryName.$invalid"
+						class="help-block">SubCategory is required.</p>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-primary"
+			ng-disabled="form.addNewSubCategoryForm.$invalid">OK</button>
+		<button type="button" class="btn btn-warning" ng-click="cancel()">Cancel</button>
+	</div>
+</form>

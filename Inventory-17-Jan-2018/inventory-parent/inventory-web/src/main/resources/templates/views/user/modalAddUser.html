@@ -1,0 +1,68 @@
+<div class="modal-header">
+	<span style="color: Gray; font-weight: bold;">User Details</span>
+</div>
+
+<style>
+select {
+	width: 150px;
+}
+body{
+	font-family: Verdana, Arial, helvetica, Geneva, sans-serif;
+	font-size: 12px;
+}
+.modal-header {
+	background-image: url("images/bac.png");
+}
+
+form {
+	background-image: url("images/bac.png");
+}
+
+input[type=text], [type=number], [type=email] {
+	background-color: activeborder;
+}
+.row{
+	padding: 15px;
+}
+</style>
+	<form name="form.addInvUserForm" ng-submit="submitInvUserForm()" novalidate>
+		<div class="modal-body">
+			<!-- NAME -->
+			<div class="form-group">
+				<label>Email</label> <input type="text" name="userEmail"
+					class="form-control" ng-model="invUser.userEmail" required>
+				<p
+					ng-show="form.addInvUserForm.userEmail.$invalid && !form.addInvUserForm.userEmail.$pristine"
+					class="help-block">Email is required.</p>
+			</div>
+
+			<!-- USERNAME -->
+			<!--         <div class="form-group">
+            <label>Username</label>
+            <input type="text" name="username" class="form-control" ng-model="user.username" ng-minlength="3" ng-maxlength="8" required>
+            <p ng-show="form.addProductForm.username.$error.minlength" class="help-block">Username is too short.</p>
+            <p ng-show="form.addProductForm.username.$error.maxlength" class="help-block">Username is too long.</p>
+        </div> -->
+			<div class="form-group">
+				<label for="firstName">First Name:</label> <input type="text"
+					class="form-control" id="firstName" ng-model="invUser.firstName" name="firstName">
+			</div>
+			<div class="form-group">
+				<label for="lastName">Last Name:</label> <input type="text"
+					class="form-control" id="lastName" ng-model="invUser.lastName" name="lastName">
+			</div>
+			<div class="form-group">
+				<label for="role">Role:</label> <input type="text"
+					class="form-control" id="role" ng-model="invUser.role" name="role" required>
+					<p
+					ng-show="form.addInvUserForm.role.$invalid && !form.addInvUserForm.role.$pristine"
+					class="help-block">Role is required.</p>
+			</div>
+
+		</div>
+		<div class="modal-footer">
+			<button type="submit" class="btn btn-primary"
+				ng-disabled="form.addInvUserForm.$invalid">OK</button>
+			<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+		</div>
+	</form>

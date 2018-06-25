@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link rel="stylesheet" type="text/css" th:href="@{classpath:static/css/style.css}" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="jumbotron">
+	<div class="container">
+		
+		<div class="row">
+			<div class="col-md-4">
+				<img alt="cart" th:src="@{classpath:static/images/plogo.png}" /><br/>
+			</div>
+			<div class="col-md-4 pull-right">
+				<label>Order Number :&nbsp;</label><span th:text="${purchaseOrder.purchaseOrderNo}">Order Number</span>
+			</div>
+		</div>
+		<hr width="1120" style="border: 2px dashed #C0C0C0" color="#FFFFFF" size="6"/>
+	
+			<div class="panel panel-default">
+			
+			<div class="panel-body">
+					<table class="table" style="border: none">
+						
+						<tbody style="border: hidden">
+							<tr>
+								<td>
+									<strong>To,&nbsp;</strong><br/>
+									<span th:text="${vendorName.name}">Vendor Name</span><br/>
+									<span th:text="${vendorAddrs.address}"></span><br/>
+									<span th:text="${vendorAddrs.city}"></span>
+									<span th:text="${vendorAddrs.country}"></span>
+									<span th:text="${vendorAddrs.state}"></span>
+									<span th:text="${vendorAddrs.pincode}"></span>
+								</td>
+								<td style="text-align: right">
+									<strong>Order Date :&nbsp;</strong><span th:text="${purchaseOrder.orderDate}">Order date</span><br/>
+									<strong>Required By Date :&nbsp;</strong><span th:text="${purchaseOrder.requiredByDate}">Required By Date</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+			</div>
+		</div>
+		
+		
+<br/>
+
+		<div class="panel panel-default">
+			
+			<div class="panel-body">
+					<table class="table" style="border: none">
+						<thead>
+							<tr>
+								<td><strong>Billed To:</strong></td>
+								<td style="text-align: right"><strong>Shipped To:</strong></td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td th:text="${purchaseOrder.billingAddress}">Billing Address</td>
+								<td style="text-align: right" th:text="${purchaseOrder.shippingAddress}">Shipping Address</td>
+							</tr>
+						</tbody>
+					</table>
+			</div>
+		</div>
+	<br/>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<strong>Order summary</strong>
+				</h3>
+			</div>
+			<div class="panel-body">
+					<table id="keywords" class="table table-condensed">
+						<thead>
+							<tr style="background-color: #808080;color:#FFFFFF">
+								<td class="text-center"><strong>PRODUCT NAME</strong></td>
+								<td class="text-center"><strong>VARIANT NAME</strong></td>
+								<td class="text-center"><strong>QUANTITY</strong></td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="lalign" th:each="purchase : ${purchaseOrderDetail}">
+								<td class="text-center" th:text="${purchase.product.productName}">Product Name</td>
+								<td class="text-center" th:text="${purchase.variant.variantName}">Variant Name</td>
+								<td class="text-center" th:text="${purchase.quantity}">Quantity</td>
+							</tr>
+						</tbody>
+					</table>
+			</div>
+		</div>
+		
+	</div>
+	</div>
+</body>
+</html>

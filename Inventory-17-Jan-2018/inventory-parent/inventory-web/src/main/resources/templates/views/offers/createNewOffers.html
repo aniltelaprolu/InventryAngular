@@ -1,0 +1,134 @@
+<div class="modal-header">
+	<span style="color: Gray; font-weight: bold;">Create A New Offer</span>
+</div>
+
+<style>
+select {
+	width: 150px;
+}
+body{
+	font-family: Verdana, Arial, helvetica, Geneva, sans-serif;
+	font-size: 12px;
+}
+.modal-header {
+	background-image: url("images/bac.png");
+}
+
+form {
+	background-image: url("images/bac.png");
+}
+
+input[type=text], [type=number], [type=email] {
+	background-color: activeborder;
+}
+.row{
+	padding: 15px;
+}
+</style>
+
+<form name="form.addOffersForm" ng-submit="submitOffersForm()" novalidate>
+		<div class="row" >
+		
+	    	<div class="col-md-3 form-inline">
+			 <div class="form-group has-warning">
+					<label for="exampleSelect1">Product Name</label><span style="color: red; font-weight: bold;">*</span>
+					<select class="form-control" id="product" ng-model="ProductId"
+						ng-change="GetSelectedVariant()">
+						<option value=''>Select</option>
+						<option ng-repeat="product in productNames"
+							value='{{product.productId}}'>{{product.productName}}</option>
+					</select>
+			</div>
+			</div>
+			<div class="col-md-3 form-inline">
+			<div class="form-group">
+				<label for="exampleSelect1">Variant Name</label><span style="color: red; font-weight: bold;">*</span>
+				      <select class="form-control" id="exampleSelect1" ng-model="VariantId" ng-change="GetSelectedQuantity(VariantId,ProductId)">
+			              <option value=''>Select</option>
+			          <option ng-repeat="variant in variantNames" value='{{variant.variantId}}'>{{variant.variantName}}</option>
+			       	 </select>  
+        	</div>
+			</div>
+			
+			<div class="col-md-3 form-inline">
+			<label for="exampleSelect1">Quantity</label>
+				<div class="form-group">
+					<input type="text" name="quantity" ng-value="{{quantity}}"
+					 class="form-control"
+					ng-model="quantity" readonly="readonly" required="required">
+	        	</div>
+			</div>
+			
+			<div class="col-md-3 form-inline">
+			<label for="exampleSelect1">Apply Quantity</label>
+				<div class="form-group">
+					<input type="text" name="quantity"
+					 class="form-control"
+					ng-model="givenQuantity" required="required">
+	        	</div>
+			</div>
+			
+			</div>
+			
+			<div class="row" >
+			<div class="col-md-3 form-inline">
+			<label for="exampleSelect1">Offer Name</label>
+				<div class="form-group">
+					<input type="text" name="offersName"
+					placeholder="Enter Offer Name" class="form-control"
+					ng-model="offerName" required>
+	        	</div>
+			</div>
+			
+			<div class="col-md-3 form-inline">
+			<label for="exampleSelect1">Discount</label>
+				<div class="form-group">
+					<input type="text" name="discount"
+					placeholder="Enter discount " class="form-control"
+					ng-model="discount" required>
+	        	</div>
+			</div>
+			
+			<div class="col-md-3 form-inline">
+			<label for="exampleSelect1">Flat Discount</label>
+				<div class="form-group">
+					<input type="text" name="flatDiscount"
+					placeholder="Enter flat Discount" class="form-control"
+					ng-model="flatDiscount" >
+	        	</div>
+			</div>
+			
+			<div class="col-md-3 form-inline">
+				<div class="form-group has-warning">
+					<label class="form">Description</label>
+					<textarea class="form-control" rows="3" required 
+					placeholder="Description" id="description" ng-model="description"
+					name="description"></textarea>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row" >
+			<div class="col-md-3 form-inline">
+				<div class="form-group has-warning">
+					<label class="form">Start Date</label><span style="color: red;font-weight: bold;">*</span>
+					<input class="form-control" type="date" ng-model="startDate" required="required"/>
+				</div>
+			</div>
+		
+			<div class="col-md-3 form-inline">
+				<div class="form-group has-warning">
+					<label class="form">End Date</label><span style="color: red;font-weight: bold;">*</span>
+					<input class="form-control" type="date" ng-model="endDate" required="required"/>
+				</div>
+			</div>
+			
+		</div>
+		
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-primary"
+			ng-disabled="form.addOffersForm.$invalid">Create New Offer</button>
+			<button type="button" class="btn btn-warning" ng-click="cancel()">Cancel</button>
+	</div>
+
+</form>

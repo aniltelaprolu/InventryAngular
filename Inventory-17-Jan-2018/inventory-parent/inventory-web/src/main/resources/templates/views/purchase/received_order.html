@@ -1,0 +1,124 @@
+<div class="modal-header">
+	<span style="color: Gray; font-weight: bold;">Received Order Details</span>
+</div>
+
+<style>
+select {
+	width: 150px;
+}
+body{
+	font-family: Verdana, Arial, helvetica, Geneva, sans-serif;
+	font-size: 12px;
+}
+.modal-header {
+	background-image: url("images/bac.png");
+}
+
+form {
+	background-image: url("images/bac.png");
+}
+
+input[type=text], [type=number], [type=email] {
+	background-color: activeborder;
+}
+.row{
+	padding: 15px;
+}
+</style>
+
+<form name="form.placeOrderForm" ng-submit="submitOrderForm()">
+		<div class="row" >
+			<div class="col-md-4">
+				<div class="form-group has-warning">
+	 			<label>Vendor Name</label><span style="color: red;font-weight: bold;">*</span>  
+			       	<select class="form-control" ng-model="VendorId" ng-change="GetSelectedPONumber(VendorId)">
+			         	<option value=''>Select</option>   
+			         	<option ng-repeat="vendor in vendorNames" value='{{vendor.vendorId}}'>{{vendor.vendorName}}</option>     
+			        </select>
+		        </div>
+	    	</div>	
+	    </div>
+	    	
+	    <div class="row" ng-show = "IsVisible">
+	    	<div class="col-md-4">
+				<div class="form-group has-warning">
+	 			<label>Select Order Number </label><span style="color: red;font-weight: bold;">*</span>  
+			       	<select class="form-control" ng-model="PurchaseOrderId" ng-change="GetSelectedPurchaseDetails(PurchaseOrderId)">
+			         	<option value=''>Select</option>   
+			         	<option ng-repeat="purchase in purchaseOrderNos" value='{{purchase.purchaseId}}'>{{purchase.purchaseNO}}</option>     
+			        </select>
+		        </div>
+	    	</div>
+	    	
+	    	<div class="col-md-4">
+				<div class="form-group has-warning">
+					<label class="form">Order Date</label>
+					<input class="form-control" type="date" ng-value="{{orderDate}}" ng-model="orderDate" />
+				</div>
+			</div>
+			
+			<div class="col-md-4">
+				<div class="form-group has-warning">
+					<label class="form">Shipping Date</label><span style="color: red;font-weight: bold;">*</span>
+					<input class="form-control" type="date" ng-model="shippingDate" />
+				</div>
+			</div>
+			
+	    </div>
+	    
+		<div class="row" ng-show = "IsVisible" >
+			<div class="col-md-6">
+				<div class="form-group has-warning">
+					<label class="form">Billing Address</label><span style="color: red;font-weight: bold;">*</span>
+					<textarea class="form-control" rows="3" required 
+					placeholder="Address" id="address2" ng-value="{{billingAddress}}" ng-model="billingAddress" 
+					name="address2" readonly="readonly"></textarea>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group has-warning">
+					<label class="form">Shipping Address</label><span style="color: red;font-weight: bold;">*</span>
+					<textarea class="form-control" rows="3" required 
+					placeholder="Address" id="address2" ng-value="{{shippingAddress}}" ng-model="shippingAddress"
+					name="address2" readonly="readonly"></textarea>
+				</div>
+			</div>
+		</div>
+			
+			<div class="row" ng-show = "IsVisible">
+				<table class="table">
+				<tr>
+					<th>Product Name<span style="color: red;font-weight: bold;">*</span></th>
+					<th>Variant Name<span style="color: red;font-weight: bold;">*</span></th>
+					<th>Quantity<span style="color: red;font-weight: bold;">*</span></th>
+					<th>Rate<span style="color: red;font-weight: bold;">*</span></th>
+
+				</tr>
+					<tr ng-repeat="product in PurchaseDetails | orderBy : 'productName'">
+						<td>{{product.productName}}</td>
+						<td>{{product.variantName}}</td>
+						
+						<td>
+						<div class="form-group has-warning">
+							<input class="form-control" style="width: 100px;"  type="text" ng-value="{{product.quantity}}" ng-model="quantity">
+						</div>
+						</td>
+						
+						<td>
+						<div class="form-group has-warning">
+							<input class="form-control" style="width: 100px;"  type="text"  ng-model="product.price">
+						</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		<br/>
+		
+	
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-primary"
+			ng-disabled="form.placeOrderForm.$invalid">Update Order</button>
+			<button type="button" class="btn btn-warning" ng-click="cancel()">Cancel</button>
+	</div>
+
+</form>

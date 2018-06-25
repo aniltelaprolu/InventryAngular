@@ -1,0 +1,132 @@
+<div class="modal-header">
+	<span style="color: Gray; font-weight: bold;">Purchase Order Details</span>
+</div>
+
+<style>
+select {
+	width: 150px;
+}
+body{
+	font-family: Verdana, Arial, helvetica, Geneva, sans-serif;
+	font-size: 12px;
+}
+.modal-header {
+	background-image: url("images/bac.png");
+}
+
+form {
+	background-image: url("images/bac.png");
+}
+
+input[type=text], [type=number], [type=email] {
+	background-color: activeborder;
+}
+.row{
+	padding: 15px;
+}
+</style>
+
+		
+<form name="form.addPurchaseForm" ng-submit="submitPurchaseForm()">
+		<div class="row" >
+			 
+			<div class="col-md-4">
+				<div class="form-group has-warning">
+	 			<label>Vendor Name</label><span style="color: red;font-weight: bold;">*</span>  
+			       	<select class="form-control" ng-model="VendorId" ng-change="GetSelectedProduct(VendorId)">
+			         	<option value=''>Select</option>   
+			         	<option ng-repeat="vendor in vendorNames" value='{{vendor.vendorId}}'>{{vendor.vendorName}}</option>     
+			        </select>
+		        </div>
+	    	</div>	
+	    	<div class="col-md-4">
+				<div class="form-group has-warning">
+					<label class="form">Order Date</label><span style="color: red;font-weight: bold;">*</span>
+					<input class="form-control" type="date" ng-model="orderDate" />
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group has-warning">
+					<label class="form">Required By Date</label><span style="color: red;font-weight: bold;">*</span>
+					<input class="form-control" type="date" ng-model="requiredByDate" />
+				</div>
+			</div>
+	   		
+		</div>
+		<div class="row" >
+			<div class="col-md-6">
+				<div class="form-group has-warning">
+					<label class="form">Billing Address</label><span style="color: red;font-weight: bold;">*</span>
+					<textarea class="form-control" rows="3" required 
+					placeholder="Address" id="address2" ng-value="{{billingAddress}}" ng-model="billingAddress" 
+					name="address2"></textarea>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group has-warning">
+					<label class="form">Shipping Address</label><span style="color: red;font-weight: bold;">*</span>
+					<textarea class="form-control" rows="3" required 
+					placeholder="Address" id="address2" ng-value="{{shippingAddress}}" ng-model="shippingAddress"
+					name="address2"></textarea>
+				</div>
+			</div>
+		</div>
+		
+		<br/>
+		<table class="table" ng-show = "IsVisible">
+			<thead style="margin-left: 30px;">
+				<tr>
+					<th>Product Name<span style="color: red;font-weight: bold;">*</span></th>
+					<th>Variant Name<span style="color: red;font-weight: bold;">*</span></th>
+					<th>Quantity<span style="color: red;font-weight: bold;">*</span></th>
+
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr ng-repeat="r in rows">
+				
+				<td style="width: 200px;">
+					<div class="form-group">
+					<!-- <label for="exampleSelect1">Product Name</label> -->
+		       	<select class="form-control" id="exampleSelect" ng-model="r.ProductId" ng-change="GetSelectedVariant(r.ProductId)" >
+		         	   <option value=''>Select</option>   
+		         	<option ng-repeat="product in productNames" value='{{product.productId}}'>{{product.productName}}</option>   
+		        </select>
+
+				</div>
+				</td>
+				
+				<td style="width: 200px;">
+					<div class="form-group">
+				      <select class="form-control" id="exampleSelect1" ng-model="r.VariantId" ng-change="GetSelectedVariantId()">
+			              <option value=''>Select</option>
+			          <option ng-repeat="variant in r.variantNames" value='{{variant.variantId}}'>{{variant.variantName}}</option>
+			       	 </select>  
+        			</div>
+				</td>
+				
+
+					<td  style="width: 100px;"><input style="width: 100px;" class="form-control" type="number" ng-model="r.quantity" 
+					 ng-change="addList(ProductId,VariantId,quantity)"  required="required" />
+					</td>
+
+					
+					<td>
+						<button type="button"
+							class="btn btn-xs btn-success fa fa-plus" tooltip="Add More" tooltip-placement="right" ng-click="addRow()"></button>
+						<button type="button" class="btn btn-xs btn-danger fa fa-minus" tooltip="Remove" tooltip-placement="right" ng-click="removeRow($index)"></button>
+					</td>
+				</tr>
+
+
+			</tbody>
+		</table>
+		
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-primary"
+			ng-disabled="form.addPurchaseForm.$invalid">Purchase</button>
+			<button type="button" class="btn btn-warning" ng-click="cancel()">Cancel</button>
+	</div>
+
+</form>

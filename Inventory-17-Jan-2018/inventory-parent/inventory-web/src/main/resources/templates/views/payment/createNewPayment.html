@@ -1,0 +1,152 @@
+<div class="modal-header">
+	<span style="color: Gray; font-weight: bold;">Payment Details</span>
+</div>
+
+<style>
+select {
+	width: 150px;
+}
+body{
+	font-family: Verdana, Arial, helvetica, Geneva, sans-serif;
+	font-size: 12px;
+}
+.modal-header {
+	background-image: url("images/bac.png");
+}
+
+form {
+	background-image: url("images/bac.png");
+}
+
+input[type=text], [type=number], [type=email] {
+	background-color: activeborder;
+}
+</style>
+
+
+<form name="form.createPayment" ng-submit="submitcreatePaymentForm()" novalidate >
+
+	<div class="modal-body">
+	
+	<div class="row">
+	
+	<div class="col-md-4">
+		<div class="form-group">
+ 			<label for="exampleSelect1">Vendor Name</label><span style="color: red;font-weight: bold;">*</span>  
+	       	<select class="form-control" id="exampleSelect1" ng-model="VendorId" ng-change="GetAllBankDetails(VendorId)"  required="required">
+	         	<option value=''>Select</option>   
+	         	<option ng-repeat="vendor in vendorNames" value='{{vendor.vendorId}}'>{{vendor.vendorName}}</option>     
+	        </select>
+    	</div>
+    </div>
+	
+	
+	<div class="col-md-4">
+		<div class="form-group has-warning">
+	 		<label>Select Order Status</label><span style="color: red;font-weight: bold;">*</span>  
+			    <select class="form-control" ng-model="poStatus" ng-change="GetSelectedPurchaseOrderNumber(poStatus)"  required="required">
+			         	<option value=''>Select</option>
+			         	<option value='PARTIALLY'>PARTIALLY</option>
+			         	<option value='COMPLETED'>COMPLETED</option>
+			         	<!-- <option ng-repeat="purchase in poStatus" value='{{purchase.poStatus}}'>{{purchase.poStatus}}</option> -->     
+			   </select>
+		</div>
+	</div>
+		
+	<div class="col-md-4">
+		<div class="form-group has-warning">
+	 		<label>Purchase Order Number</label><span style="color: red;font-weight: bold;">*</span>  
+			    <select class="form-control" ng-model="purchaseOrderId" ng-change="GetSelectedReceivedDetails(purchaseOrderId)"  required="required">
+			         	<option value=''>Select</option>   
+			         	<option ng-repeat="purchase in purchaseOrderNumbers" value='{{purchase.purchaseId}}'>{{purchase.purchaseNO}}</option>
+			   </select>
+		</div>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col-md-4">
+		<div class="form-group has-warning">
+	 		<label>Received Order Number</label><span style="color: red;font-weight: bold;">*</span>  
+			    <select class="form-control" ng-model="ReceivedOrderId" ng-change="GetTotalAmount(ReceivedOrderId)"  required="required">
+			         	<option value=''>Select</option>   
+			         	<option ng-repeat="receive in ReceivedOrderNumbers" value='{{receive.receivedOrderId}}'>{{receive.receivedOrderNo}}</option>
+			   </select>
+		</div>
+	</div>
+	
+	<div class="col-md-4">
+		<div class="form-group has-warning">
+			<label>Due Amount</label>
+					<input type="text" class="form-control" ng-value="{{totalAmount}}" ng-model="totalAmount" name="totalAmount" readonly="readonly"/>
+		</div>
+	</div>
+	
+	<div class="col-md-4">
+			<label for="payAmount">Pay Amount</label><span style="color: red;font-weight: bold;">*</span>  
+				<div class="form-group">
+					<input type="text" name="payAmount"
+					 class="form-control"
+					ng-model="payAmount" required="required">
+	        	</div>
+	</div>
+	</div> 
+	
+	<div class="row">
+	<div class="col-md-3">
+	<div class="form-group has-warning">
+			<label for="pay">Pay By</label>
+			&nbsp;&nbsp; 
+			<div class="radio">
+				<label>
+					<input type="radio" name="pay" value="CHEQUE" ng-model="payBy" ng-value="'CHEQUE'" ng-click="hideBankDetails()">CHEQUE
+				</label>
+				<label>
+					<input type="radio" name="pay" value="BANKTRANSFER" ng-model="payBy" ng-click="showBankDetails()" ng-value="'BANKTRANSFER'">Bank Account
+				</label>
+			</div>
+  	</div>     
+  	
+  	</div>
+  	</div>
+  	
+  	<div class="row">
+  	
+  		<div class="col-md-4" ng-show = "IsVisibleCheque">
+			<label for="payAmount">Cheque Number</label><span style="color: red;font-weight: bold;">*</span>  
+				<div class="form-group">
+					<input type="text" name="chequeNumber"
+					 class="form-control"
+					ng-model="chequeNumber">
+	        	</div>
+		</div>
+    	
+    	<div class="col-md-4" ng-show = "IsVisible">
+		<div class="form-group">
+ 			<label for="exampleSelect1">Company Bank Details</label><span style="color: red;font-weight: bold;">*</span>  
+	       	<select class="form-control" id="exampleSelect1" ng-model="CompanyBankId" ng-change="GetCompanyBankDetails(companyBankId)">
+	         	<option value=''>Select</option>   
+	         	<option ng-repeat="cbank in companyBankDetails" value='{{cbank.companyBankId}}'>{{cbank.bankName}}-{{cbank.accountNumber}}</option>     
+	        </select>
+    	</div>
+    	</div>
+  		
+		<div class="col-md-4" ng-show = "IsVisible">
+		<div class="form-group">
+ 			<label for="exampleSelect1">Vendor Bank Details</label><span style="color: red;font-weight: bold;">*</span>  
+	       	<select class="form-control" id="exampleSelect1" ng-model="VendorAccountId" ng-change="GetVendorBankDetails(VendorAccountId)">
+	         	<option value=''>Select</option>   
+	         	<option ng-repeat="bank in listBank" value='{{bank.vendorAccountId}}'>{{bank.bankName}}-{{bank.accountNumber}}</option>     
+	        </select>
+    	</div>
+    	</div>
+  	</div>
+  
+   </div>
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-primary"
+			ng-disabled="form.createPayment.$invalid">Make Payment</button>
+		<button type="button" class="btn btn-warning" ng-click="cancel()">Cancel</button>
+	</div>
+ </form>       
+                       

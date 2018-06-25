@@ -1,0 +1,131 @@
+<div class="modal-header">
+	<span style="color: Gray; font-weight: bold;">Modify Variant Details</span>
+</div>
+
+<style>
+.modal-body {
+	padding: 20px;
+}
+body{
+	font-family: Verdana, Arial, helvetica, Geneva, sans-serif;
+	font-size: 12px;
+}
+.modal-header {
+	background-image: url("images/bac.png");
+}
+
+form {
+	background-image: url("images/bac.png");
+}
+
+input[type=text], [type=number], [type=email] {
+	background-color: activeborder;
+}
+</style>
+
+<form name="form.editVariantForm" ng-submit="submitUpadateVariantForm()"
+	novalidate>
+	<div class="row">
+		<div class="modal-body animate">
+			<div class="col-md-4">
+			
+			<!-- 
+			<div class="form-group">
+           
+		<label for="exampleSelect1">Vendor Name:</label>
+	      <select class="form-control" id="exampleSelect1" ng-model="VendorId" ng-change="GetSelectedProduct()">
+	         <option value=''>Select</option>   
+	         <option ng-repeat="vendor in vendorNames" value='{{vendor.vendorId}}'>{{vendor.vendorName}}</option>     
+       	  </select>
+        </div>
+                
+            
+			<div class="form-group">
+     	<label for="exampleSelect1">Product Name:</label>      
+      	  <select class="form-control" id="product" ng-model="productId" ng-change="addProductDetails()">
+              <option value=''>Select</option>
+              <option ng-repeat="product in productNames" value='{{product.productId}}'>{{product.productName}}</option>
+       	 </select>    
+        
+        </div>
+         -->
+        		<!-- <div class="form-group has-warning">
+					<label>Vendor Name</label> <input type="text" name="vendorName"
+						 class="form-control"
+						ng-model="invVariant.vendorName" readonly="readonly">	
+				</div> -->
+				
+				<div class="form-group has-warning">
+					<label>Product Name</label> <input type="text" name="productName"
+						class="form-control"
+						ng-model="invVariant.productName" readonly="readonly">
+					
+				</div>
+				
+				
+				<div class="form-group has-warning">
+					<label>Variant Name</label><span style="color: red;font-weight: bold;">*</span>  <input type="text" name="variantName"
+						placeholder="Enter Variant Name" class="form-control"
+						ng-model="invVariant.variantName" required>
+					<p
+						ng-show="form.editVariantForm.variantName.$touch && !form.editVariantForm.variantName.$invalid"
+						class="help-block">Variant Name is required.</p>
+				</div>
+				<div class="form-group has-warning">
+					<label>Price</label> <span style="color: red;font-weight: bold;">*</span> <input type="text" name="price"
+						placeholder="Enter Price" class="form-control"
+						ng-model="invVariant.price" required>
+					<p
+						ng-show="form.editVariantForm.price.$touch && !form.editVariantForm.price.$invalid"
+						class="help-block">Price is required.</p>
+				</div>
+				<div class="form-group has-warning">
+					<label>Quantity</label><span style="color: red;font-weight: bold;">*</span>  <input type="text" name="quantity"
+						placeholder="Enter Quantity" class="form-control"
+						ng-model="invVariant.quantity" required>
+					<p
+						ng-show="form.editVariantForm.quantity.$touch && !form.editVariantForm.quantity.$invalid"
+						class="help-block">Quantity is required.</p>
+				</div>
+
+			</div>
+		
+			<div class="col-md-4">
+				 <div>
+					<label ng-model="colorAtttr" > {{colorAtttr}} </label>
+					<div class="form-group has-warning">
+					 <select class="form-control" 
+						ng-show="colorOptions.length>0" ng-model="selectedColorOption"
+						ng-options="x for x in colorOptions" >
+						
+					</select>
+					
+					<label ng-model="sizeAtttr" >{{sizeAtttr}}</label>
+					</select>
+					<div class="form-group has-warning">
+					 <select class="form-control" 
+						ng-show="sizeOptions.length>0" ng-model="selectedSizeOption"
+						ng-options="x for x in sizeOptions" >
+						
+					</select>
+					</div>
+					<div class="form-group has-warning" ng-hide ="lengthAtttr == null">
+					<label ng-model="lengthAtttr" >{{lengthAtttr}}</label>
+					 <input class="form-control"
+					 		type="number" ng-model="selectedLength"
+						 />
+						 </div>
+	
+				</div>
+				
+		</div>
+		</div>
+		</div>
+		</div>
+
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-primary"
+			ng-disabled="form.editVariantForm.$invalid">Update</button>
+		<button type="button" class="btn btn-warning" ng-click="cancel()">Cancel</button>
+	</div>
+</form>

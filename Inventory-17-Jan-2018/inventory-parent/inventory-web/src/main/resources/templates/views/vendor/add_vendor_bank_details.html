@@ -1,0 +1,162 @@
+<div class="modal-header">
+	<span style="color: Gray; font-weight: bold; text-align: center;">
+		Vendor Bank Account Details</span>
+</div>
+
+<style>
+form {
+	margin: 0px;
+	padding: 20px;
+	font-family: Tahoma;
+}
+
+body {
+	font-family: Verdana, Arial, helvetica, Geneva, sans-serif;
+	font-size: 12px;
+}
+
+.modal-header {
+	background-image: url("images/bac.png");
+}
+
+form {
+	background-image: url("images/bac.png");
+}
+
+input[type=text], [type=number], [type=email] {
+	color: black;
+	background-color: activeborder;
+}
+
+textarea {
+	background-color: activeborder;
+}
+}
+</style>
+
+<form name="form.addBankDetails" ng-submit="submitVendorBankForm()"
+	novalidate>
+
+	<div class="modal-body">
+ 		<table class="table">
+			<thead>
+				<tr>
+					<th>Name<span style="color: red;font-weight: bold;">*</span></th>
+					<th>Bank Name<span style="color: red;font-weight: bold;">*</span></th>
+					<th>Branch Name<span style="color: red;font-weight: bold;">*</span></th>
+					<th>Account Number<span style="color: red;font-weight: bold;">*</span></th>
+					<th>IFSC Code<span style="color: red;font-weight: bold;">*</span></th>
+
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr ng-repeat="a in arr">
+				<td>
+				<div class="form-group has-warning">
+				 <input type="text"
+						placeholder="Account Holder Name" required="required"
+						class="form-control" id="accountHolderName" ng-model="a.accountHolderName"
+						name="acHolderName">
+				</div>
+				
+				</td>
+				<td>
+					<div class="form-group has-warning">
+						<input type="text"
+						placeholder="Bank Name" required="required" class="form-control"
+						id="bankName" ng-model="a.bankName" name="bankName">
+					</div>
+				
+				</td>
+				
+				<td>
+					<div class="form-group has-warning">
+					 <input type="text"
+							placeholder="Branch name" required="required" class="form-control"
+							id="branch" ng-model="a.branch" name="branch">
+					</div>
+				
+				</td>
+				<td>
+					<div class="form-group has-warning">
+						<input type="text"
+							placeholder="Account Number" required="required"
+							class="form-control" id="a.accountNo" ng-model="a.accountNumber"
+							name="accountNo">
+					</div>
+				
+				</td>
+				<td>
+					<div class="form-group has-warning">
+						<input type="text"
+						placeholder="IFSC Code" required="required" class="form-control"
+						id="ifscCode" ng-model="a.ifscCode" name="ifscCode">
+					</div>
+				</td>
+					
+				<td>
+					<button type="button" class="btn btn-xs btn-success fa fa-plus" tooltip="Add More" tooltip-placement="right" ng-click="addRow()"></button>
+				</td>
+				
+				<td>
+					<button type="button" class="btn btn-xs btn-success fa fa-minus" tooltip="Remove" tooltip-placement="right" ng-click="deleteRow($index)"></button>
+				</td>
+				
+				</tr>
+				
+			</tbody>
+		</table>
+		
+		
+		<table class="table table-hover">
+			<thead style="background-color: green;color: white;">
+				<tr>
+					<!-- <th>ID</th> -->
+					<th>Name</th>
+					<th>Bank Name</th>
+					<th>Branch Name</th>
+					<th>Account Number</th>
+					<th>IFSC Code</th>
+					<th>Update/Delete</th>
+				</tr>
+			</thead>
+			<tbody style="font-weight: bold;">
+
+				<tr ng-repeat="bank in listBank">
+				<!-- <td>
+					{{bank.vendorAccountId}}
+				</td> -->
+				<td>
+					{{bank.accountHolderName}}
+				</td>
+				<td>
+					{{bank.bankName}}
+				</td>
+				<td>
+					{{bank.branch}}
+				</td>
+				<td>
+					{{bank.accountNumber}}
+				</td>
+				<td>
+					{{bank.ifscCode}}
+				</td>
+				
+				<td><button type="button"  ng-click="bankEdit(bank)" class="btn btn-xs btn-success fa fa-pencil-square-o" tooltip="Edit" tooltip-placement="top"></button> &nbsp;&nbsp;&nbsp;<button type="button" ng-click="bankDelete(bank)" class="btn btn-xs btn-danger fa fa-trash-o" tooltip="Delete" tooltip-placement="top"></button></td>
+				</tr>
+				
+				
+			</tbody>
+		</table>
+		
+		
+		
+</div>
+
+		<div class="modal-footer">
+			<button type="submit" class="btn btn-primary"
+			ng-disabled="form.addBankDetails.$invalid">Save Details</button>
+		<button type="button" class="btn btn-warning" ng-click="cancel()">Cancel</button>
+		</div>
+</form>
